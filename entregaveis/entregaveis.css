@@ -1,0 +1,336 @@
+/* =============================================================================
+   entregaveis.css — o sistema visual da família de entregáveis de @arthurferreiraos
+   Consumido pela central (/entregaveis/) E por cada guia. UMA fonte, N saídas.
+
+   A LENTE, declarada (impeccable: "unnamed ambition becomes beige"):
+   ARQUIVO DE CINEMA. Sala escura, o quadro é a única coisa iluminada, a luz é
+   tungstênio e os dados técnicos vêm na claquete em mono. Não é revista, não é
+   terminal, não é catálogo de SaaS. Sai do conteúdo: os materiais ensinam a
+   fabricar imagem em movimento, então a vitrine se comporta como uma moviola.
+
+   O QUE ISSO CONSERTA (medido contra o que estava no ar em 15/09):
+   - "tudo é card": a borda saiu. O QUADRO é o objeto; o texto fica solto embaixo.
+   - "eyebrow em toda seção": UM kicker por página. Os demais rótulos são claquete.
+   - "border-left colorido": banido. Nenhum existe aqui.
+   - "zero imagem": o quadro 4:5 é a peça, e ele se move.
+   - Anton em card e UI: devolvido à manchete, como o design-system.md manda.
+
+   Herança: os hex de âmbar e sage são os de GenHQ/globals.css. O carvão é novo e
+   é o "preto/carvão liso com âmbar quente" que a style-bible declara APROVADO.
+   ============================================================================= */
+
+/* ------------------------------------------------------------------ tokens -- */
+:root{
+  /* sala escura, quente. Croma puxado para o hue do âmbar, nunca para o azul
+     (azul-petróleo é regressão declarada na style-bible). */
+  --bg:        #14120F;
+  --surface:   #1C1917;
+  --surface-2: #262220;
+
+  --ink:       #F2EDE4;   /* 16.0:1 no bg */
+  --ink-soft:  #CFC6B8;   /* 11.1:1 */
+  --ink-mute:  #9A9084;   /*  5.9:1 — passa em corpo, não é cinza decorativo */
+
+  --line:      #3A342D;   /* separador decorativo */
+  --line-ui:   #6B6459;   /* borda de controle real: 3.2:1, WCAG 1.4.11 */
+
+  /* âmbar: o mesmo #B47B3F canônico. Dois papéis, medidos.
+     -fill leva tinta escura por cima (5.2:1). -lit é o âmbar como TEXTO (9.0:1). */
+  --amber:      #B47B3F;
+  --amber-lit:  #E3A868;
+  --amber-ink:  #14120F;
+  --sage:       #7FA184;  /* sage levantado para o fundo escuro. Uso raro. */
+
+  --sans:    "Geist", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --mono:    "Geist Mono", ui-monospace, "Cascadia Code", Consolas, monospace;
+  --display: "Anton", "Oswald", Impact, sans-serif;
+
+  /* escala fluida, razão >= 1.25 entre degraus */
+  --t-slate: .72rem;
+  --t-micro: .84rem;
+  --t-body:  1.06rem;
+  --t-lede:  clamp(1.12rem, 1.6vw, 1.32rem);
+  --t-frame: clamp(1.18rem, 1.5vw, 1.4rem);
+  --t-mid:   clamp(1.9rem, 3.4vw, 2.7rem);
+  --t-big:   clamp(3.2rem, 11vw, 5.6rem);   /* teto 89.6px, abaixo do limite de 6rem */
+
+  /* respiro: o vazio é identidade (style-bible). Escala espaçosa. */
+  --s1: .5rem;  --s2: .875rem; --s3: 1.5rem;
+  --s4: 2.5rem; --s5: 4rem;    --s6: clamp(4.5rem, 9vw, 7.5rem);
+
+  --gut: clamp(1.25rem, 5vw, 4rem);
+  --medida: 68ch;
+
+  --saida: cubic-bezier(.16,1,.3,1);      /* ease-out-expo: entra */
+  --entra: cubic-bezier(.7,0,.84,0);      /* ease-in: sai, mais rápido */
+
+  --z-base:1; --z-quadro:2; --z-fixo:10; --z-topo:20;
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--ink);
+  font:var(--t-body)/1.68 var(--sans);
+  -webkit-font-smoothing:antialiased;
+  /* luz de tungstênio entrando pelo alto. NÃO é glow de neon nem dourado frio:
+     é uma queda de luz quente, baixa, atrás do conteúdo. */
+  background-image:radial-gradient(120% 70% at 50% -10%, #241D16 0%, transparent 62%);
+  background-attachment:fixed;
+}
+
+/* grão de filme. Textura de verdade, sem asset externo e sem biblioteca. */
+body::before{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:var(--z-fixo);
+  opacity:.045;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23g)'/%3E%3C/svg%3E");
+}
+
+/* ------------------------------------------------------------ tipo e texto -- */
+h1,h2,h3{margin:0;text-wrap:balance}
+
+/* Anton SÓ na manchete. Card, corpo e UI seguem a Geist (design-system.md). */
+.manchete{
+  font-family:var(--display);font-weight:400;text-transform:uppercase;
+  line-height:.92;letter-spacing:-.015em;
+}
+.manchete--maxima{font-size:var(--t-big)}
+.manchete--media {font-size:var(--t-mid);line-height:.96}
+
+/* hierarquia radical: uma palavra âncora domina, o suporte vira micro.
+   É a mesma regra que a style-bible exige na capa, aplicada à página. */
+.suporte{
+  display:block;font:500 clamp(.63rem,2.2vw,.84rem)/1.35 var(--mono);
+  letter-spacing:clamp(.12em,.9vw,.24em);text-transform:uppercase;
+  color:var(--ink-mute);margin-bottom:var(--s2);text-wrap:balance;
+}
+
+p{margin:0}
+.lede{font-size:var(--t-lede);line-height:1.5;color:var(--ink-soft);max-width:42ch}
+.prosa{max-width:var(--medida);color:var(--ink-soft);text-wrap:pretty}
+
+a{color:var(--amber-lit);text-underline-offset:.2em}
+a:hover{color:var(--ink)}
+
+/* claquete: o dado técnico do quadro. Mono, curto, nunca como título de seção. */
+.claquete{
+  font:500 var(--t-slate)/1.3 var(--mono);letter-spacing:.16em;
+  text-transform:uppercase;color:var(--ink-mute);
+  font-variant-numeric:tabular-nums;
+}
+.claquete--luz{color:var(--amber-lit)}
+
+code{font-family:var(--mono);font-size:.88em;color:var(--amber-lit);
+  background:var(--surface-2);padding:.1em .4em;border-radius:2px}
+
+:where(a,button,input,summary):focus-visible{
+  outline:2px solid var(--amber-lit);outline-offset:3px;border-radius:2px;
+}
+
+/* ------------------------------------------------------------------ chassi -- */
+.faixa{padding-inline:var(--gut)}
+.limite{max-width:1180px;margin-inline:auto}
+.coluna{max-width:var(--medida);margin-inline:auto}
+
+/* ------------------------------------------------------- abertura assimétrica */
+/* a manchete à esquerda, a busca deslocada. Nada centralizado por reflexo. */
+.abertura{
+  padding-block:var(--s6) var(--s5);
+  display:grid;gap:var(--s4);
+  /* minmax(0,1fr) e nao 1fr: o minimo automatico de uma pista e min-content, e
+     era ele que empurrava 14px de estouro horizontal em 393px (medido). */
+  grid-template-columns:minmax(0,1fr);
+}
+@media (min-width:920px){
+  .abertura{grid-template-columns:minmax(0,1.15fr) minmax(320px,.85fr);
+    align-items:end;gap:var(--s5)}
+}
+.abertura__marca{
+  display:flex;align-items:center;gap:var(--s2);
+  margin-bottom:var(--s4);text-decoration:none;color:var(--ink-mute);
+}
+.abertura__marca:hover{color:var(--ink)}
+.abertura__marca svg{width:26px;height:26px;color:currentColor;flex:none}
+.abertura__marca span{font:500 var(--t-slate) var(--mono);letter-spacing:.16em;
+  text-transform:uppercase}
+.abertura h1 em{font-style:normal;color:var(--amber-lit);display:block}
+
+/* ------------------------------------------------------------------- busca -- */
+.busca{display:flex;flex-direction:column;gap:var(--s2)}
+.busca__label{font:500 var(--t-micro) var(--sans);color:var(--ink-soft)}
+.busca__campo{display:flex;gap:.5rem}
+.busca input{
+  flex:1;min-width:0;min-height:48px;
+  background:var(--surface);color:var(--ink);
+  border:1px solid var(--line-ui);border-radius:2px;
+  padding:0 var(--s2);font:var(--t-body) var(--sans);
+  transition:border-color .18s var(--saida), background-color .18s var(--saida);
+}
+.busca input::placeholder{color:var(--ink-mute)}
+.busca input:focus{outline:none;border-color:var(--amber-lit);background:var(--surface-2)}
+.busca button{
+  min-height:48px;padding-inline:var(--s3);cursor:pointer;
+  background:var(--amber);color:var(--amber-ink);border:0;border-radius:2px;
+  font:700 .92rem var(--sans);text-transform:uppercase;letter-spacing:.08em;
+  transition:background-color .18s var(--saida), transform .12s var(--saida);
+}
+.busca button:hover{background:var(--amber-lit)}
+.busca button:active{transform:translateY(1px)}
+
+.retorno{min-height:1.4em;font-size:var(--t-micro);color:var(--ink-mute)}
+.retorno button{
+  background:none;border:0;padding:0;cursor:pointer;color:var(--amber-lit);
+  font:600 var(--t-micro) var(--sans);text-decoration:underline;
+  text-underline-offset:.2em;
+}
+
+/* ------------------------------------------------- a folha de contato (grade) */
+.banda{padding-block:var(--s5)}
+.banda__topo{
+  display:flex;flex-wrap:wrap;align-items:baseline;gap:var(--s2) var(--s3);
+  margin-bottom:var(--s4);
+}
+.banda__topo h2{font:600 var(--t-frame) var(--sans);letter-spacing:-.01em}
+.banda__topo .claquete{margin-left:auto}
+
+/* Assimetria de verdade, e a contagem decide a composição. Um quadro sozinho numa
+   grade de 3 colunas é espaço morto, não design: cada contagem tem seu arranjo. */
+.folha{display:grid;gap:var(--s4) var(--s3);grid-template-columns:repeat(2,minmax(0,1fr))}
+@media (min-width:760px){.folha{grid-template-columns:repeat(3,minmax(0,1fr))}}
+
+/* 3 ou mais: folha de contato com o quadro da vez em dobro. */
+@media (min-width:760px){
+  .folha--destaca > .quadro:first-child{grid-column:span 2;grid-row:span 2}
+  .folha--destaca > .quadro:first-child .quadro__legenda{
+    font-family:var(--display);font-weight:400;text-transform:uppercase;
+    font-size:var(--t-mid);line-height:.96;letter-spacing:-.015em;
+  }
+}
+
+/* 2: par honesto, meio a meio, sem hierarquia inventada. */
+@media (min-width:760px){
+  .folha--par{grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--s4)}
+}
+
+/* 1: não é card, é O quadro. Moldura grande à esquerda, a ficha ao lado. */
+.folha--solo{grid-template-columns:minmax(0,1fr)}
+@media (min-width:760px){
+  .folha--solo > .quadro{
+    display:grid;align-items:center;gap:var(--s5);
+    grid-template-columns:minmax(0,440px) minmax(0,1fr);
+  }
+  .folha--solo .quadro__legenda{
+    font-family:var(--display);font-weight:400;text-transform:uppercase;
+    font-size:var(--t-mid);line-height:.94;letter-spacing:-.015em;
+  }
+  .folha--solo .quadro__nota{font-size:var(--t-lede);line-height:1.5;
+    color:var(--ink-soft);max-width:38ch}
+}
+
+/* ------------------------------------------------------------------ quadro -- */
+/* SEM borda e SEM caixa: o objeto é a imagem. O texto fica solto embaixo. */
+.quadro{display:flex;flex-direction:column;gap:var(--s2);text-decoration:none;color:inherit}
+
+.quadro__janela{
+  position:relative;aspect-ratio:4/5;max-width:100%;overflow:hidden;
+  background:var(--surface-2);border-radius:3px;
+  transition:transform .4s var(--saida), box-shadow .4s var(--saida);
+}
+.quadro__janela > img,
+.quadro__janela > video{
+  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;
+  z-index:var(--z-quadro);
+}
+.quadro__janela > video{opacity:0;transition:opacity .45s var(--saida)}
+.quadro.esta-rodando .quadro__janela > video{opacity:1}
+
+/* a luz acende no quadro sob o cursor. É o gesto da sala escura. */
+@media (hover:hover){
+  .quadro:hover .quadro__janela,
+  .quadro:focus-visible .quadro__janela{
+    transform:translateY(-3px) scale(1.012);
+    box-shadow:0 18px 40px -16px #000, 0 0 0 1px var(--amber);
+  }
+}
+
+/* capa que falta: cartela tipográfica, nunca quadrado quebrado. */
+.quadro__cartela{
+  position:absolute;inset:0;z-index:var(--z-base);display:flex;align-items:flex-end;
+  padding:var(--s2) var(--s2) calc(var(--s4) + var(--s1));
+  background:linear-gradient(160deg,var(--surface-2),var(--surface));
+  font-family:var(--display);font-weight:400;text-transform:uppercase;
+  font-size:1.35rem;line-height:1;color:var(--ink-soft);
+}
+
+.quadro__selo{
+  position:absolute;top:.6rem;left:.6rem;z-index:3;
+  font:500 var(--t-slate) var(--mono);letter-spacing:.14em;text-transform:uppercase;
+  padding:.25rem .5rem;border-radius:2px;
+}
+.selo--palavra{background:var(--amber);color:var(--amber-ink)}
+.selo--arquivo{background:#14120FD9;color:var(--ink-soft);backdrop-filter:blur(3px)}
+.selo--pendente{background:var(--sage);color:var(--amber-ink)}
+
+.quadro__resgatar{
+  position:absolute;inset-inline:0;bottom:0;z-index:3;
+  padding:2.2rem .7rem .6rem;
+  background:linear-gradient(to top,#0B0A08F2,transparent);
+  font:600 var(--t-slate) var(--sans);letter-spacing:.1em;text-transform:uppercase;
+  color:var(--amber-lit);
+  display:flex;justify-content:space-between;align-items:center;gap:.5rem;
+}
+.quadro__resgatar .seta{transition:transform .3s var(--saida)}
+@media (hover:hover){.quadro:hover .quadro__resgatar .seta{transform:translateX(4px)}}
+
+.quadro__texto{display:flex;flex-direction:column;gap:var(--s1);min-width:0}
+.quadro__legenda{font:600 var(--t-frame)/1.18 var(--sans);letter-spacing:-.01em}
+.quadro__nota{font-size:var(--t-micro);line-height:1.45;color:var(--ink-mute)}
+
+.quadro--arquivado .quadro__janela > img{filter:saturate(.3) brightness(.62)}
+.quadro--arquivado .quadro__legenda{color:var(--ink-soft)}
+@media (hover:hover){
+  .quadro--arquivado:hover .quadro__janela > img{filter:none}
+}
+
+/* ------------------------------------------------------------------- vazio -- */
+.vazio{
+  padding:var(--s4) var(--s3);color:var(--ink-mute);
+  border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  max-width:52ch;
+}
+
+/* ------------------------------------------------------------------- fecho -- */
+.fecho{padding-block:var(--s6);border-top:1px solid var(--line)}
+.fecho .coluna{margin-inline:0}   /* o eixo da pagina e a esquerda, nao o centro */
+.fecho .prosa{margin-bottom:var(--s3)}
+.rodape{
+  padding-block:var(--s3) var(--s5);
+  display:flex;flex-wrap:wrap;gap:var(--s1) var(--s3);justify-content:space-between;
+}
+
+/* ------------------------------------------------------------------ motion -- */
+/* Estado de repouso = VISÍVEL. A animação só enriquece o que já está correto,
+   então headless, aba oculta e reduced-motion nunca entregam página em branco. */
+@media (prefers-reduced-motion:no-preference){
+  @keyframes surge{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+  .surge{animation:surge .7s var(--saida) both}
+  /* escalonamento de 45ms: a folha de contato revela quadro a quadro */
+  .folha > *{animation:surge .62s var(--saida) both;
+    animation-delay:calc(var(--i,0) * 45ms + 120ms)}
+}
+
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.01ms !important;
+    animation-iteration-count:1 !important;transition-duration:.01ms !important}
+}
+
+/* --------------------------------------------------------------- impressão -- */
+@media print{
+  body{background:#fff;color:#000}
+  body::before{display:none}
+  .quadro__resgatar,.busca{display:none}
+}

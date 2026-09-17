@@ -1,0 +1,228 @@
+/* =============================================================================
+   guia.css — a camada long-form da família de entregáveis. Carrega DEPOIS de
+   entregaveis.css e herda todos os tokens dele (carvão, âmbar, Anton, Geist).
+
+   Ela veste a marcação que os guias JÁ TÊM. Nenhuma palavra do conteúdo foi
+   tocada na migração: o que saiu de cada arquivo foi o bloco <style> inline, e
+   o que entrou foram dois <link>. O vocabulário de classes abaixo é o que os
+   dois guias usam hoje, contado no disco, não suposto:
+
+     g · col · hero · top · eyebrow · lede · film · seam · lbl · l1 · l2
+     caption · intro · note · rules · rule · n · prompt · bar · fill · ficha
+     steps · swap · tbl · close
+
+   O QUE ISSO CONSERTA nos guias que estavam no ar:
+   - `.note` tinha border-left de 3px, que é banimento literal. Virou marcador
+     quadrado com recuo: distingue sem a tarja.
+   - o rótulo em mono aparecia 10 e 13 vezes por página. Agora só o da abertura
+     é voz; os de dentro viram claquete quieta, que é dado, não escada.
+   - a moldura de 1,5px em cada bloco sumiu. Sobra onde é limite de verdade.
+   ============================================================================= */
+
+/* os dois style="" que sobraram na marcação apontam para este nome; no escuro
+   ele tem que ser o âmbar CLARO, senão o texto some. */
+:root{ --amber-deep: var(--amber-lit); }
+
+/* ------------------------------------------------------------------ chassi -- */
+.g{padding-inline:var(--gut)}
+.col{max-width:var(--medida);margin-inline:auto}
+
+/* ----------------------------------------------------------------- abertura -- */
+.hero{padding-block:var(--s5) var(--s4)}
+.hero .top{
+  display:flex;justify-content:space-between;align-items:center;gap:var(--s3);
+  margin-bottom:var(--s5);
+}
+.hero .top a{
+  color:var(--ink-mute);text-decoration:none;
+  font:500 var(--t-slate) var(--mono);letter-spacing:.16em;text-transform:uppercase;
+}
+.hero .top a:hover{color:var(--ink)}
+.hero .top svg{width:30px;height:30px;color:var(--ink-mute);flex:none}
+
+/* O rótulo da abertura é O kicker da página: um só, e é voz. */
+.hero .eyebrow{
+  display:block;font:500 clamp(.63rem,2.2vw,.8rem)/1.35 var(--mono);
+  letter-spacing:clamp(.12em,.9vw,.22em);text-transform:uppercase;
+  color:var(--amber-lit);margin-bottom:var(--s2);
+}
+.hero h1{
+  font-family:var(--display);font-weight:400;text-transform:uppercase;
+  font-size:var(--t-big);line-height:.92;letter-spacing:-.015em;
+  margin:0 0 var(--s3);
+}
+.hero .lede{
+  font-size:var(--t-lede);line-height:1.5;color:var(--ink-soft);max-width:46ch;
+}
+
+/* ------------------------------------------------------------------- o filme */
+.film{
+  position:relative;margin-top:var(--s4);overflow:hidden;border-radius:4px;
+  background:#000;box-shadow:0 28px 64px -28px #000;
+}
+.film video,.film img{display:block;width:100%;height:auto;aspect-ratio:16/10;
+  object-fit:cover;max-width:100%}
+.film .seam{position:absolute;top:0;bottom:0;left:50%;
+  border-left:2px dashed #F2EDE4B3;pointer-events:none}
+.film .lbl{
+  position:absolute;top:.7rem;padding:.25rem .5rem;border-radius:2px;
+  background:#0B0A08CC;color:var(--ink-soft);backdrop-filter:blur(3px);
+  font:500 var(--t-slate) var(--mono);letter-spacing:.14em;text-transform:uppercase;
+}
+.film .l1{left:.7rem}
+.film .l2{left:calc(50% + .7rem)}
+/* Capa de um slide só (4:5), em vez do quadro panorâmico cortado ao meio. */
+.film.vert{max-width:25rem;margin-inline:auto}
+.film.vert video,.film.vert img{aspect-ratio:4/5;object-fit:contain;background:#000}
+
+.caption{margin-top:var(--s2);font:var(--t-slate)/1.5 var(--mono);color:var(--ink-mute)}
+
+/* -------------------------------------------------------------------- corpo -- */
+main{padding-block:var(--s6) var(--s4)}
+main .col{display:flex;flex-direction:column;gap:var(--s6)}
+section{display:flex;flex-direction:column;gap:var(--s3)}
+
+/* Os rótulos de dentro NÃO são escada de seção: são claquete, dado técnico. */
+main .eyebrow{
+  font:500 var(--t-slate) var(--mono);letter-spacing:.16em;text-transform:uppercase;
+  color:var(--ink-mute);
+}
+main h2{
+  font-family:var(--display);font-weight:400;text-transform:uppercase;
+  font-size:var(--t-mid);line-height:.96;letter-spacing:-.015em;margin:0;
+}
+main h3{font:600 1.02rem/1.35 var(--sans);margin:0;color:var(--ink)}
+main p{color:var(--ink-soft)}
+.intro{font-size:var(--t-lede);line-height:1.5;color:var(--ink-soft);max-width:58ch}
+
+/* ------------------------------------------------------------------ o recado */
+/* Sem tarja lateral (banida). Marcador quadrado e recuo: distingue sem moldura. */
+.note{
+  position:relative;padding-left:var(--s3);color:var(--ink-mute);max-width:62ch;
+}
+.note::before{
+  content:"";position:absolute;left:0;top:.62em;
+  width:.5rem;height:.5rem;background:var(--amber);border-radius:1px;
+}
+
+/* ------------------------------------------------------------------- regras -- */
+/* Numeração porque É sequência: cada regra depende da anterior. */
+.rules{display:flex;flex-direction:column}
+.rule{
+  display:grid;grid-template-columns:auto 1fr;gap:var(--s3);
+  padding-block:var(--s3);border-bottom:1px solid var(--line);
+}
+.rules .rule:first-child{border-top:1px solid var(--line)}
+.rule .n{
+  font-family:var(--display);font-size:2.6rem;line-height:.8;color:var(--amber);
+  font-variant-numeric:tabular-nums;min-width:2ch;
+}
+.rule p{color:var(--ink-mute);margin-top:.3rem}
+@media (max-width:520px){.rule{gap:var(--s2)}.rule .n{font-size:2rem}}
+
+/* ------------------------------------------------------------------- passos -- */
+.steps{
+  counter-reset:s;list-style:none;margin:0;padding:0;
+  display:flex;flex-direction:column;gap:var(--s3);
+}
+.steps li{display:grid;grid-template-columns:auto 1fr;gap:var(--s3);align-items:start}
+.steps li::before{
+  counter-increment:s;content:counter(s,decimal-leading-zero);
+  font:500 var(--t-micro) var(--mono);color:var(--amber-lit);
+  font-variant-numeric:tabular-nums;padding-top:.28em;
+}
+.steps p{color:var(--ink-mute);margin-top:.25rem}
+
+/* --------------------------------------------------------------- o prompt --- */
+/* A peça mais funcional da página: a caixa preta de onde se copia. */
+.prompt{
+  background:#0B0A08;border:1px solid var(--line);border-radius:3px;overflow:hidden;
+}
+.prompt .bar{
+  display:flex;justify-content:space-between;align-items:center;gap:var(--s2);
+  padding:.7rem var(--s2);border-bottom:1px solid var(--line);background:var(--surface);
+  flex-wrap:wrap;
+}
+.prompt .bar span{
+  font:500 var(--t-slate) var(--mono);letter-spacing:.16em;text-transform:uppercase;
+  color:var(--amber-lit);
+}
+.prompt button{
+  min-height:38px;padding-inline:var(--s2);cursor:pointer;border:0;border-radius:2px;
+  background:var(--amber);color:var(--amber-ink);
+  font:700 .8rem var(--sans);text-transform:uppercase;letter-spacing:.07em;
+  transition:background-color .18s var(--saida), transform .12s var(--saida);
+}
+.prompt button:hover{background:var(--amber-lit)}
+.prompt button:active{transform:translateY(1px)}
+.prompt pre{
+  margin:0;padding:var(--s3) var(--s2) var(--s3);
+  white-space:pre-wrap;word-break:break-word;overflow-x:auto;
+  max-height:30rem;overflow-y:auto;
+  font:.82rem/1.7 var(--mono);color:#D9D2C6;
+}
+/* o que o leitor TROCA. É a única coisa colorida dentro do prompt. */
+.fill{color:var(--amber-lit)}
+
+/* ------------------------------------------------------------------- ficha --- */
+.ficha{display:flex;flex-wrap:wrap;gap:.45rem}
+.ficha span{
+  font:500 var(--t-slate) var(--mono);letter-spacing:.1em;
+  padding:.35rem .6rem;border-radius:2px;
+  background:var(--surface-2);color:var(--ink-soft);
+}
+
+/* -------------------------------------------------------------------- troca -- */
+.swap{display:grid;gap:1px;background:var(--line);
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  border:1px solid var(--line);border-radius:3px;overflow:hidden}
+.swap div{background:var(--bg);padding:var(--s3) var(--s2)}
+.swap h3{
+  font:500 var(--t-slate) var(--mono);letter-spacing:.16em;text-transform:uppercase;
+  color:var(--ink-mute);margin-bottom:.5rem;
+}
+.swap p{font-size:.95rem;line-height:1.5;color:var(--ink-soft)}
+
+/* ------------------------------------------------------------------ tabela --- */
+.tbl{overflow-x:auto;border:1px solid var(--line);border-radius:3px}
+.tbl table{border-collapse:collapse;width:100%;min-width:520px;font-size:.95rem}
+.tbl td,.tbl th{padding:.8rem var(--s2);text-align:left;vertical-align:top;
+  border-bottom:1px solid var(--line)}
+.tbl th{
+  font:500 var(--t-slate) var(--mono);letter-spacing:.14em;text-transform:uppercase;
+  color:var(--ink-mute);background:var(--surface);
+}
+.tbl tr:last-child td{border-bottom:0}
+.tbl td:first-child{font-weight:600;color:var(--ink)}
+.tbl td{color:var(--ink-soft)}
+
+/* ------------------------------------------------------------------- fecho --- */
+.close{
+  padding-block:var(--s6);margin-top:var(--s5);border-top:1px solid var(--line);
+}
+.close .col{display:flex;flex-direction:column;gap:var(--s3)}
+.close .eyebrow{
+  font:500 var(--t-slate) var(--mono);letter-spacing:.16em;text-transform:uppercase;
+  color:var(--amber-lit);
+}
+.close h2{
+  font-family:var(--display);font-weight:400;text-transform:uppercase;
+  font-size:var(--t-mid);line-height:.96;letter-spacing:-.015em;margin:0;
+}
+.close p{color:var(--ink-soft);max-width:56ch}
+
+footer{padding-block:var(--s3) var(--s5)}
+footer .col{color:var(--ink-mute);font:500 var(--t-slate) var(--mono);
+  letter-spacing:.14em;text-transform:uppercase}
+
+/* ------------------------------------------------------------------ motion --- */
+/* Repouso VISÍVEL: a animação só enriquece o que já está correto. */
+@media (prefers-reduced-motion:no-preference){
+  .hero .top,.hero .eyebrow,.hero h1,.hero .lede,.film{
+    animation:surge .7s var(--saida) both;
+  }
+  .hero .eyebrow{animation-delay:.05s}
+  .hero h1{animation-delay:.1s}
+  .hero .lede{animation-delay:.16s}
+  .film{animation-delay:.22s}
+}

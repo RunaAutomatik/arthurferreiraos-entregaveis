@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Carrossel animado · guia · Arthur Ferreira</title>
+<meta name="description" content="O processo completo do carrossel animado com Claude e Remotion: os três passos, o componente mínimo que funciona, o comando de render e as duas armadilhas que fazem o render falhar calado no Windows.">
+<meta property="og:title" content="Carrossel animado · o guia completo">
+<meta property="og:description" content="Claude escreve a animação, o Remotion renderiza. Os três passos, o código mínimo e as duas armadilhas do Windows.">
+<meta property="og:image" content="capa-poster.jpg">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="../entregaveis.css">
+<link rel="stylesheet" href="../guia.css">
+</head>
+<body>
+
+<header class="hero g">
+  <div class="col">
+    <div class="top">
+      <a href="https://www.instagram.com/arthurferreiraos/">@arthurferreiraos</a>
+      <svg viewBox="0 0 100 100" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" fill="currentColor" d="M 20 20 h 60 a 8 8 0 0 1 8 8 v 44 a 8 8 0 0 1 -8 8 h -60 a 8 8 0 0 1 -8 -8 v -44 a 8 8 0 0 1 8 -8 Z M 50 27 L 33 55 L 40 55 L 50 38 L 60 55 L 67 55 Z M 41 63 L 55 63 L 55 67 L 41 67 Z M 66.5 65 a 4.5 4.5 0 1 0 -9 0 a 4.5 4.5 0 1 0 -9 0 Z"/></svg>
+    </div>
+    <span class="eyebrow">Guia completo · palavra-chave ANIMADO</span>
+    <h1>Carrossel animado</h1>
+    <p class="lede">Oito slides em vídeo, feitos sem abrir editor. O Claude escreve a animação, o Remotion renderiza o arquivo. Aqui estão os três passos, o componente mínimo que já funciona, o comando de render e as duas armadilhas que fizeram o meu primeiro render falhar em silêncio.</p>
+    <div class="film vert">
+      <video src="capa.mp4" poster="capa-poster.jpg" autoplay muted loop playsinline></video>
+    </div>
+    <p class="caption">O slide 1 do carrossel. O texto fica parado; o que se mexe são as miniaturas, que trocam de conteúdo.</p>
+  </div>
+</header>
+
+<main class="g">
+<div class="col">
+
+  <section>
+    <span class="eyebrow">O motivo</span>
+    <h2>Vídeo que se reescreve sem refazer</h2>
+    <p class="intro">Num editor de linha do tempo, mudar uma palavra da manchete significa reposicionar tudo que estava encaixado nela. Aqui a animação é código: a manchete é uma variável, o movimento é uma função do tempo, e trocar o texto de oito slides é editar oito linhas e rodar o render de novo. É a mesma diferença entre reescrever um documento e reimprimi-lo.</p>
+    <p class="note">O custo disso fica em zero. Nenhum slide é gerado por IA de vídeo: o fundo e o texto são fixos, e o único elemento que se move é animado na própria composição, que é uma página animada gravada em vídeo. Até o slide que mostra um card ganhando vida é código: a capa é recriada dentro do Remotion e se monta peça por peça na tela.</p>
+  </section>
+
+  <section>
+    <span class="eyebrow">A regra que sustenta tudo</span>
+    <h2>Um elemento se move por slide</h2>
+    <div class="rules">
+      <div class="rule"><span class="n">01</span><div><h3>O movimento aponta para a lição</h3><p>Se o slide ensina que o primeiro slide vira o sistema, o que se mexe são as variações aparecendo. O texto fica parado. Duas coisas se mexendo ao mesmo tempo viram ruído e o olho não sabe onde pousar.</p></div></div>
+      <div class="rule"><span class="n">02</span><div><h3>Quatro segundos por slide</h3><p>É o tempo de ler a manchete e ver o movimento acontecer uma vez. Mais que isso, a pessoa arrasta antes do fim e você animou para ninguém.</p></div></div>
+      <div class="rule"><span class="n">03</span><div><h3>A pílula do CTA aparece em todos os slides</h3><p>Não só no último. Quem sai no slide 4 precisa saber qual palavra comentar. É a diferença entre um carrossel bonito e um carrossel que gera conversa.</p></div></div>
+    </div>
+    <p class="note">E uma quarta, que só aparece depois de errar: as demonstrações dentro dos slides são peças reais suas, não ilustração genérica. O carrossel animado que mostra carrosséis mostra <em>os seus</em>. É o que separa demonstração de propaganda.</p>
+  </section>
+
+  <section>
+    <span class="eyebrow">Passo 1</span>
+    <h2>Comece pelo contexto</h2>
+    <p>Antes de desenhar qualquer coisa, peça o roteiro. Slide a slide, com o que se mexe em cada um já definido. Decidir a animação depois do desenho é o caminho mais rápido para oito slides bonitos que não contam nada.</p>
+    <ol class="steps">
+      <li><div><h3>Abra o Claude Code na pasta do projeto</h3><p>Com as suas skills de design já instaladas, se você tiver.</p></div></li>
+      <li><div><h3>Cole a pauta e quem é o público</h3><p>Sem isso ele escreve para ninguém.</p></div></li>
+      <li><div><h3>Peça o roteiro slide a slide</h3><p>Um passo por slide, e o que se mexe em cada um.</p></div></li>
+      <li><div><h3>Revise a ordem antes de desenhar</h3><p>Trocar a ordem no texto custa um minuto. Depois de renderizado custa a tarde.</p></div></li>
+    </ol>
+    <div class="prompt">
+      <div class="bar"><span>o pedido do roteiro</span><button type="button" id="copy-r" data-alvo="p-r">Copiar pedido</button></div>
+<pre id="p-r">monte o roteiro de um carrossel de 8 slides sobre <span class="fill">[o seu tema]</span>. um passo por slide, com o que se mexe em cada um. o público é <span class="fill">[quem]</span>. a última linha de cada slide tem que caber em uma manchete curta e em caixa alta.</pre>
+    </div>
+  </section>
+
+  <section>
+    <span class="eyebrow">Passo 2</span>
+    <h2>O primeiro slide vira o sistema</h2>
+    <p>Não peça os oito de uma vez. Peça várias versões só do primeiro slide, escolha uma, e diga que essa é o padrão. Os outros sete nascem dela: mesma grade, mesma tipografia, mesma cor de acento, mesmo rodapé. O trabalho de design acontece uma vez.</p>
+    <p class="note"><b>Mostre o estilo, não descreva.</b> Mandar o print de um carrossel que você gosta e dizer "use isto como referência de design" funciona melhor do que qualquer adjetivo. Guarde numa pasta as referências que já deram certo: elas viram o seu repertório e param de depender da sua memória.</p>
+  </section>
+
+  <section>
+    <span class="eyebrow">Passo 3</span>
+    <h2>Anime com Remotion</h2>
+    <p>O Remotion é o que transforma uma página animada em arquivo de vídeo. Ele é grátis para pessoa física e para empresa de até três funcionários; acima disso a empresa compra a licença.</p>
+    <div class="ficha"><span>1080 × 1350</span><span>30 fps</span><span>120 frames · 4 s</span><span>um slide por render</span></div>
+    <div class="prompt">
+      <div class="bar"><span>criar o projeto</span><button type="button" id="copy-c" data-alvo="p-c">Copiar comando</button></div>
+<pre id="p-c">npx create-video@latest</pre>
+    </div>
+    <p>O projeto já nasce com um <span class="fill">src/Root.tsx</span> e uma composição de exemplo. Troque a composição pela sua e escreva o slide como um componente comum. Este é o menor slide que já se move de verdade:</p>
+    <div class="prompt">
+      <div class="bar"><span>src/Slide.tsx</span><button type="button" id="copy-s" data-alvo="p-s">Copiar código</button></div>
+<pre id="p-s">import {AbsoluteFill, useCurrentFrame, interpolate} from 'remotion';
+
+export const Slide: React.FC&lt;{titulo: string}&gt; = ({titulo}) =&gt; {
+  const frame = useCurrentFrame();
+  const sobe    = interpolate(frame, [0, 24], [70, 0], {extrapolateRight: 'clamp'});
+  const aparece = interpolate(frame, [0, 24], [0, 1],  {extrapolateRight: 'clamp'});
+
+  return (
+    &lt;AbsoluteFill style={{backgroundColor: '#0B0A08', justifyContent: 'center', padding: 80}}&gt;
+      &lt;div style={{
+        fontFamily: 'Anton', fontSize: 130, lineHeight: 1.02, color: '#F2EDE4',
+        textTransform: 'uppercase',
+        transform: `translateY(${sobe}px)`, opacity: aparece,
+      }}&gt;{titulo}&lt;/div&gt;
+    &lt;/AbsoluteFill&gt;
+  );
+};</pre>
+    </div>
+    <div class="prompt">
+      <div class="bar"><span>src/Root.tsx</span><button type="button" id="copy-t" data-alvo="p-t">Copiar código</button></div>
+<pre id="p-t">import {Composition} from 'remotion';
+import {Slide} from './Slide';
+
+export const RemotionRoot: React.FC = () =&gt; (
+  &lt;Composition
+    id="Slide"
+    component={Slide}
+    durationInFrames={120}
+    fps={30}
+    width={1080}
+    height={1350}
+    defaultProps={{titulo: 'Pare de fazer carrossel parado.'}}
+  /&gt;
+);</pre>
+    </div>
+    <p><span class="fill">npx remotion studio</span> abre a prévia no navegador, com a barra de tempo. É onde você acerta o movimento antes de renderizar.</p>
+  </section>
+
+  <section>
+    <span class="eyebrow">O render</span>
+    <h2>Um slide por arquivo</h2>
+    <p>Cada slide sai num render próprio, com um número diferente na entrada. Grave o número num arquivo JSON e passe o caminho:</p>
+    <div class="prompt">
+      <div class="bar"><span>render · Windows</span><button type="button" id="copy-x" data-alvo="p-x">Copiar comandos</button></div>
+<pre id="p-x">mkdir out props
+echo {"slide":1} &gt; props/1.json
+
+npx remotion render src/index.ts Slide out/slide-1.mp4 ^
+  --props=props/1.json ^
+  --browser-executable="C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe"</pre>
+    </div>
+    <p class="note">No Mac e no Linux troque o <span class="fill">^</span> por <span class="fill">\</span> no fim das linhas, e o <span class="fill">--browser-executable</span> normalmente nem é necessário.</p>
+  </section>
+
+  <section>
+    <span class="eyebrow">O que me custou uma noite</span>
+    <h2>As duas armadilhas do Windows</h2>
+    <div class="rules">
+      <div class="rule"><span class="n">01</span><div><h3>O navegador que o Remotion baixa sozinho falha calado</h3><p>Ele avisa que está baixando, o download termina, o processo sai com código de sucesso e <b>nenhum arquivo aparece</b>. Não há mensagem de erro para procurar no Google. A cura é apontar para o Edge ou o Chrome que já estão instalados, com <span class="fill">--browser-executable</span>, como no comando acima.</p></div></div>
+      <div class="rule"><span class="n">02</span><div><h3>As aspas do <code>--props</code> não sobrevivem ao terminal</h3><p>Passar o JSON direto na linha de comando parece funcionar e chega quebrado do outro lado. Grave num arquivo e passe o caminho. Sempre.</p></div></div>
+    </div>
+    <p class="note">Estas duas não estão no topo de nenhuma documentação, e juntas elas produzem o mesmo sintoma: o comando termina bem e não existe vídeo nenhum. Se você bater nisso, não é você.</p>
+  </section>
+
+  <section>
+    <span class="eyebrow">Antes de publicar</span>
+    <h2>Confira os oito</h2>
+    <p>Render que falha calado não avisa duas vezes. Antes de subir, conte os arquivos e leia as dimensões de cada um:</p>
+    <div class="prompt">
+      <div class="bar"><span>conferência</span><button type="button" id="copy-f" data-alvo="p-f">Copiar comando</button></div>
+<pre id="p-f">for i in 1 2 3 4 5 6 7 8; do
+  ffprobe -v error -show_entries stream=width,height,duration -of csv=p=0 out/slide-$i.mp4 || echo "slide $i FALTOU"
+done</pre>
+    </div>
+    <div class="tbl"><table>
+      <thead><tr><th>Confere</th><th>O que tem que aparecer</th></tr></thead>
+      <tbody>
+        <tr><td>Os oito existem</td><td>Oito linhas, nenhum "FALTOU"</td></tr>
+        <tr><td>Tamanho</td><td>1080,1350 em todos</td></tr>
+        <tr><td>Duração</td><td>Perto de 4 segundos em todos</td></tr>
+        <tr><td>Um movimento só</td><td>Assista cada clipe. Dois elementos se mexendo reprovam o slide.</td></tr>
+        <tr><td>A pílula do CTA</td><td>Olhe o primeiro frame dos oito. Ela tem que estar em todos.</td></tr>
+      </tbody>
+    </table></div>
+  </section>
+
+  <section>
+    <span class="eyebrow">Quando dá errado</span>
+    <h2>Consertos</h2>
+    <div class="tbl"><table>
+      <thead><tr><th>Sintoma</th><th>O que fazer</th></tr></thead>
+      <tbody>
+        <tr><td>O comando termina bem e não há arquivo</td><td>É a armadilha 01. Aponte o <code>--browser-executable</code> para o Edge ou o Chrome instalado.</td></tr>
+        <tr><td>"Timed out after 25000 ms while trying to connect to the browser"</td><td>Acontece de vez em quando, com qualquer navegador, e não quer dizer que o caminho está errado. Rode o mesmo slide de novo. Num lote, faça o script tentar outra vez quem falhou.</td></tr>
+        <tr><td>"Visited localhost:3000 but got no response"</td><td>Acontece de vez em quando com muitos renders em paralelo. Rode de novo com <code>--concurrency=2</code>.</td></tr>
+        <tr><td>A fonte aparece errada no vídeo</td><td>A fonte precisa terminar de carregar antes do primeiro frame. Se você usa fonte da web, segure o render até ela carregar com <code>delayRender</code> e <code>continueRender</code>.</td></tr>
+        <tr><td>O texto pisca ou salta no início</td><td>Você animou a partir do frame 0 sem <code>extrapolateRight: 'clamp'</code>. Sem o clamp, o valor continua crescendo depois do fim.</td></tr>
+        <tr><td>Ficou pesado para o Instagram</td><td>Não recomprima os masters. Renderize já no tamanho certo e mande esses arquivos.</td></tr>
+      </tbody>
+    </table></div>
+  </section>
+
+</div>
+</main>
+
+<div class="close g">
+  <div class="col">
+    <span class="eyebrow" style="color:#E3A868">Se só lembrar disso</span>
+    <h2>Roteiro antes do desenho. Um elemento se move. O primeiro slide vira o sistema.</h2>
+    <p>Fez o seu primeiro animado? Manda no <a href="https://www.instagram.com/arthurferreiraos/">@arthurferreiraos</a>. Eu respondo dizendo o que eu mudaria.</p>
+  </div>
+</div>
+<footer class="g"><div class="col">arthurferreiraos.com/entregaveis</div></footer>
+
+<script>
+document.querySelectorAll('button[data-alvo]').forEach(function(b){
+  b.addEventListener('click',function(){
+    var t=document.getElementById(b.dataset.alvo).innerText;
+    var ok=function(){var o=b.textContent;b.textContent='Copiado';setTimeout(function(){b.textContent=o},1800)};
+    if(navigator.clipboard){navigator.clipboard.writeText(t).then(ok,function(){})}
+  });
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>A ficha do personagem · guia · Arthur Ferreira</title>
+<meta name="description" content="Como manter o mesmo rosto em toda imagem e todo vídeo: a escada de fidelidade medida, a regra do enquadramento, as sete seções da ficha de personagem e o set de fotos que conserta a cabeça desproporcional.">
+<meta property="og:title" content="A ficha do personagem · o guia completo">
+<meta property="og:description" content="Ângulo não é identidade. A escada de fidelidade, a regra do enquadramento e as sete seções da ficha que trava o rosto.">
+<meta property="og:image" content="capa-poster.jpg">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="../entregaveis.css">
+<link rel="stylesheet" href="../guia.css">
+</head>
+<body>
+
+<header class="hero g">
+  <div class="col">
+    <div class="top">
+      <a href="https://www.instagram.com/arthurferreiraos/">@arthurferreiraos</a>
+      <svg viewBox="0 0 100 100" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" fill="currentColor" d="M 20 20 h 60 a 8 8 0 0 1 8 8 v 44 a 8 8 0 0 1 -8 8 h -60 a 8 8 0 0 1 -8 -8 v -44 a 8 8 0 0 1 8 -8 Z M 50 27 L 33 55 L 40 55 L 50 38 L 60 55 L 67 55 Z M 41 63 L 55 63 L 55 67 L 41 67 Z M 66.5 65 a 4.5 4.5 0 1 0 -9 0 a 4.5 4.5 0 1 0 -9 0 Z"/></svg>
+    </div>
+    <span class="eyebrow">Guia completo · palavra-chave CLONE</span>
+    <h1>A ficha do personagem</h1>
+    <p class="lede">O seu clone muda de cara a cada vídeo porque falta uma referência travada, não porque falta prompt. Aqui está o que trava: a escada de fidelidade com os números que medimos, a regra de enquadramento que nenhum prompt contorna, as sete seções da ficha e o set de fotos que conserta o defeito mais comum de todos.</p>
+    <div class="film vert">
+      <video src="capa.mp4" poster="capa-poster.jpg" autoplay muted loop playsinline></video>
+    </div>
+    <p class="caption">Duas cenas, a mesma pessoa. Trocar de ferramenta não resolve isso. Referência resolve.</p>
+  </div>
+</header>
+
+<main class="g">
+<div class="col">
+
+  <section>
+    <span class="eyebrow">O motivo</span>
+    <h2>Ângulo não é identidade</h2>
+    <p class="intro">O prompt da moda pede uma grade 3×3 da pessoa em vários ângulos, e ele funciona: entrega os nove ângulos, bonitos, coerentes entre si. O problema começa no décimo. Na cena seguinte, muda a luz, muda a pele, muda a pessoa, porque cada geração nova recomeça do zero e reinterpreta o rosto por conta própria.</p>
+    <p class="note">Uma grade de ângulos mostra a pessoa de vários lados dentro de uma imagem. Ela não diz ao modelo quem é essa pessoa quando a próxima imagem começar em branco. É por isso que trocar de ferramenta não adianta: o buraco não está na ferramenta, está na ausência de um documento que atravesse as gerações.</p>
+  </section>
+
+  <section>
+    <span class="eyebrow">O que ninguém conta</span>
+    <h2>Nem todo caminho tem o mesmo teto</h2>
+    <p>Existem várias formas de pôr a mesma pessoa numa cena nova, e elas não empatam. Estes números saíram dos nossos testes, não de material de divulgação:</p>
+    <div class="tbl"><table>
+      <thead><tr><th>Caminho</th><th>Fidelidade</th><th>Quando usar</th></tr></thead>
+      <tbody>
+        <tr><td>Foto real recortada, fundo gerado em volta</td><td>100%</td><td>Post ou capa com rosto. É o padrão do mercado, e ninguém fala.</td></tr>
+        <tr><td>Animar a foto real direto</td><td>quase 100%</td><td>Reel de pessoa falando.</td></tr>
+        <tr><td><b>Cena nova ancorada em 3 ou mais fotos reais</b></td><td><b>80 a 85%</b></td><td><b>O padrão.</b> Com uma foto só cai para perto de 70%, e aí não é mais você.</td></tr>
+        <tr><td>Modelo treinado no seu rosto</td><td>90% por geração</td><td>Volume de cena livre. Entre uma geração e outra o rosto escorrega mesmo assim.</td></tr>
+        <tr><td>Geração a partir da ficha de personagem</td><td>85% de teto</td><td>Quando "claramente ele" já basta.</td></tr>
+        <tr><td>Vídeo</td><td>herda do primeiro frame</td><td>Sempre. Veja a regra abaixo.</td></tr>
+      </tbody>
+    </table></div>
+    <p class="note"><b>A regra de ouro do vídeo:</b> a fidelidade do vídeo é a fidelidade do primeiro frame, e só. Não existe prompt de vídeo que conserte um frame inicial em que o rosto já saiu errado. Acerte a imagem, depois anime.</p>
+  </section>
+
+  <section>
+    <span class="eyebrow">A regra que nenhum prompt contorna</span>
+    <h2>O enquadramento manda</h2>
+    <p class="intro">O caminho escolhido diz o máximo de fidelidade que dá para alcançar. Quem decide se você chega lá é o tamanho do rosto dentro do quadro.</p>
+    <p>Medimos isto com as mesmas três fotos, o mesmo prompt e a mesma trava. Numa cena com o rosto pequeno, distante e atrás de um vidro, saiu outra pessoa. Na mesma cena com o rosto grande e de frente, saiu fiel na primeira tentativa. Pouco pixel de rosto e o modelo preenche o resto com um estranho. Nenhuma âncora salva isso.</p>
+    <div class="ficha"><span>rosto grande no quadro</span><span>de frente ou 3/4</span><span>bem iluminado</span><span>sem vidro, reflexo ou contraluz</span></div>
+    <p><b>Quando a ideia exige a pessoa pequena ou de longe</b>, e às vezes exige mesmo, o caminho é em duas camadas, nesta ordem:</p>
+    <ol class="steps">
+      <li><div><h3>Gere o retrato no enquadramento bom</h3><p>Rosto grande, de frente, luz boa. É aqui que a semelhança nasce.</p></div></li>
+      <li><div><h3>Componha esse retrato dentro da cena</h3><p>No tamanho que a ideia pede. O rosto continua vindo de pixel de foto real, não de rosto reconstruído.</p></div></li>
+    </ol>
+    <p class="note">A alternativa é aproximar o rosto e mudar a ideia. As duas saídas são legítimas. O que não funciona é gerar assim mesmo e torcer.</p>
+  </section>
+
+  <section>
+    <span class="eyebrow">O documento</span>
+    <h2>A ficha, em sete seções</h2>
+    <p class="intro">A ficha de personagem é uma prancha única, vertical, montada uma vez e usada em toda geração daí para a frente. Enquanto ela não existe, cada vídeo recomeça do zero e o rosto escapa de novo.</p>
+    <div class="ficha"><span>vertical 3:4</span><span>4K</span><span>fundo neutro de estúdio</span><span>luz suave uniforme</span></div>
+    <div class="tbl"><table>
+      <thead><tr><th>#</th><th>Seção</th><th>O que entra</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>Perfil</td><td>Nome, papel, idade aproximada, altura, tipo de corpo, personalidade, até 6 traços distintivos e 3 cores de assinatura</td></tr>
+        <tr><td>2</td><td>Volta completa</td><td>Quatro corpos inteiros na mesma escala: frente, 3/4, perfil e costas</td></tr>
+        <tr><td>3</td><td>Rosto e identidade</td><td>Três closes de cabeça e ombros: frente, perfil e 3/4</td></tr>
+        <tr><td>4</td><td>Expressões</td><td>Oito closes: neutro, feliz, bravo, triste, surpreso, preocupado, confiante, determinado</td></tr>
+        <tr><td>5</td><td>Poses</td><td>Seis corpos inteiros: neutro, andando, sentado, relaxado, tenso e pronto para agir</td></tr>
+        <tr><td>6</td><td>Figurino</td><td>Grade de closes das peças de roupa, cada uma com legenda curta</td></tr>
+        <tr><td>7</td><td>Paleta</td><td>Seis amostras de cor com nome e código HEX, mais os materiais</td></tr>
+      </tbody>
+    </table></div>
+    <p class="note"><b>Todo texto da prancha é escrito por você, não pelo modelo.</b> Nome, idade, altura, personalidade, legenda e código de cor entram literalmente no pedido. Deixar o modelo inventar qualquer um desses campos é abrir a porta para ele inventar o resto.</p>
+  </section>
+
+  <section>
+    <span class="eyebrow">Antes de gerar a prancha</span>
+    <h2>Preencha a ficha em texto</h2>
+    <p>Este é o documento que vira a prancha. Preencha tudo antes de gerar qualquer imagem. Campo que você não sabe vira pergunta, nunca chute.</p>
+    <div class="prompt">
+      <div class="bar"><span>ficha · preencha e guarde</span><button type="button" id="copy-f" data-alvo="p-f">Copiar modelo</button></div>
+<pre id="p-f">NOME: <span class="fill">[até 20 caracteres]</span>
+PAPEL: <span class="fill">[o que essa pessoa é na sua comunicação]</span>
+IDADE APROXIMADA: <span class="fill">[  ]</span>
+ALTURA APROXIMADA: <span class="fill">[  ]</span>
+TIPO DE CORPO: <span class="fill">[  ]</span>
+PERSONALIDADE: <span class="fill">[até 40 caracteres]</span>
+
+TRAÇOS DISTINTIVOS (até 6, curtos):
+ - <span class="fill">[estrutura do rosto]</span>
+ - <span class="fill">[cabelo: corte e cor exata]</span>
+ - <span class="fill">[barba, se houver: formato e cor]</span>
+ - <span class="fill">[olhos: cor e formato]</span>
+ - <span class="fill">[pele: textura, sardas, assimetrias reais]</span>
+ - <span class="fill">[postura]</span>
+
+FIGURINO: <span class="fill">[as peças, os tecidos, os calçados]</span>
+CORES DE ASSINATURA: <span class="fill">[3 cores com o código HEX]</span>
+O QUE A IA NÃO PODE INVENTAR: <span class="fill">[marca, logo, tatuagem, cicatriz, acessório fixo]</span></pre>
+    </div>
+    <p class="note">Assimetria natural é realismo. Não idealize: se um lado do rosto é diferente do outro, escreva isso. É exatamente o que impede a prancha de sair com cara de avatar de banco de imagem.</p>
+  </section>
+
+  <section>
+    <span class="eyebrow">O erro mais comum de todos</span>
+    <h2>A cabeça desproporcional é culpa das fotos</h2>
+    <p class="intro">Aquele resultado em que sai "o primo" em vez da pessoa, com a cabeça grande demais para o corpo, não é falha do modelo. É viés do conjunto de fotos que você deu. Confirmamos num teste com dois conjuntos, mesmos prompts, e a única variável eram as fotos.</p>
+    <div class="tbl"><table>
+      <thead><tr><th>Conjunto ruim, o que causa o defeito</th><th>Conjunto bom, o que conserta</th></tr></thead>
+      <tbody>
+        <tr><td>Oito selfies de celular</td><td>Fotos de câmera de verdade quando der. A grande angular da selfie distorce a proporção do rosto em todas as fotos ao mesmo tempo.</td></tr>
+        <tr><td>Todas no mesmo ângulo frontal fechado</td><td>Frontal, 3/4 e perfil. Nunca só frontal repetido.</td></tr>
+        <tr><td>Todas na mesma distância</td><td>Pelo menos 1 corpo inteiro, 3 ou 4 da cintura para cima, 1 ou 2 closes de rosto.</td></tr>
+        <tr><td>Metade com óculos escuros</td><td>No máximo uma foto com os olhos cobertos.</td></tr>
+      </tbody>
+    </table></div>
+    <p class="note">O que acontece por baixo: com todas as fotos no mesmo enquadramento, o modelo aprende a associar "essa pessoa" àquele recorte específico. Quando o pedido é corpo inteiro numa pose nova, falta informação da relação entre cabeça e corpo, e ele improvisa. Trocar o conjunto conserta o defeito sem mudar mais nada.</p>
+  </section>
+
+  <section>
+    <span class="eyebrow">A regra que se quebra sem perceber</span>
+    <h2>Nunca ancore numa imagem gerada</h2>
+    <p>É tentador: saiu uma imagem linda, ela vira a referência da próxima, que vira a referência da seguinte. Em cinco gerações você está a cinco cópias de distância da pessoa real, e cada cópia levou embora um pouco do rosto. A âncora de identidade é sempre foto real. Imagem gerada é resultado, nunca fonte.</p>
+    <p class="note">Se a peça é vídeo de talking head, a imagem que você manda para o modelo se chama imagem-clone, e ela obedece à mesma lógica: gerada em alta resolução, do peito para cima, de frente, luz uniforme. <b>Nunca um frame capturado de um vídeo:</b> o modelo herda a qualidade da entrada, e um frame comprimido assa os defeitos em todos os clipes que vierem depois.</p>
+  </section>
+
+  <section>
+    <span class="eyebrow">As 4 coisas que você trava</span>
+    <h2>O resumo do carrossel, com o porquê</h2>
+    <div class="rules">
+      <div class="rule"><span class="n">01</span><div><h3>O rosto de frente, de perfil e em 3/4</h3><p>Três ângulos reais dão ao modelo a geometria da sua cabeça. Um ângulo só dá um recorte, e ele preenche o resto inventando.</p></div></div>
+      <div class="rule"><span class="n">02</span><div><h3>A luz que sempre bate em você</h3><p>Luz é metade do que o olho reconhece como "a mesma pessoa". Duas cenas com esquemas de luz diferentes parecem duas pessoas, mesmo com o rosto certo.</p></div></div>
+      <div class="rule"><span class="n">03</span><div><h3>O figurino do personagem</h3><p>Peça, tecido, cor com código. Roupa que muda de tom entre cenas denuncia mais rápido que o rosto.</p></div></div>
+      <div class="rule"><span class="n">04</span><div><h3>Os detalhes que a IA não pode inventar</h3><p>Escreva o que é proibido aparecer: logo em roupa lisa, tatuagem que você não tem, acessório que some. Modelo que não recebe proibição preenche o vazio.</p></div></div>
+    </div>
+  </section>
+
+  <section>
+    <span class="eyebrow">Quando dá errado</span>
+    <h2>Consertos</h2>
+    <div class="tbl"><table>
+      <thead><tr><th>Sintoma</th><th>O que fazer</th></tr></thead>
+      <tbody>
+        <tr><td>Cada cena parece uma pessoa diferente</td><td>Você está gerando sem ancorar. Junte 3 ou mais fotos reais e use as três em toda geração.</td></tr>
+        <tr><td>A cabeça sai grande demais para o corpo</td><td>Troque o conjunto de fotos pelo conjunto bom da tabela acima. O prompt não conserta isso.</td></tr>
+        <tr><td>A pessoa some quando está longe na cena</td><td>Enquadramento. Gere o retrato de perto e componha dentro da cena, em duas camadas.</td></tr>
+        <tr><td>Apareceu um logo numa roupa lisa</td><td>É defeito conhecido. Reforce "roupa completamente lisa e sem marca" e reprove qualquer geração com logo legível.</td></tr>
+        <tr><td>O vídeo começa certo e escorrega</td><td>Não é o vídeo: é o primeiro frame. Refaça a imagem inicial pelo caminho de maior fidelidade e anime de novo.</td></tr>
+        <tr><td>As expressões saem todas iguais</td><td>O conjunto de fotos tem pouca variedade de expressão. O modelo devolve o que recebeu.</td></tr>
+      </tbody>
+    </table></div>
+  </section>
+
+  <section>
+    <span class="eyebrow">O atalho</span>
+    <h2>A skill que monta a ficha para você</h2>
+    <p>Tudo o que está acima dá para fazer na mão, e funciona. O que a nossa comunidade usa é uma skill que executa esse processo inteiro: lê as fotos aprovadas, tira as cores do figurino da sua referência de roupa, monta a ficha em texto, pergunta o que ficou ambíguo, calcula o custo antes de gastar crédito e só então gera a prancha nas sete seções, sempre no mesmo padrão.</p>
+    <p class="note">A diferença prática não é velocidade. É que ela não deixa você gerar com a ficha incompleta, que é exatamente onde o rosto começa a escapar.</p>
+  </section>
+
+</div>
+</main>
+
+<div class="close g">
+  <div class="col">
+    <span class="eyebrow" style="color:#E3A868">Se só lembrar disso</span>
+    <h2>Não falta prompt. Falta uma referência travada.</h2>
+    <p>Montou a ficha do seu personagem? Manda a prancha no <a href="https://www.instagram.com/arthurferreiraos/">@arthurferreiraos</a>. Eu digo qual seção vai te dar trabalho depois.</p>
+  </div>
+</div>
+<footer class="g"><div class="col">arthurferreiraos.com/entregaveis</div></footer>
+
+<script>
+document.querySelectorAll('button[data-alvo]').forEach(function(b){
+  b.addEventListener('click',function(){
+    var t=document.getElementById(b.dataset.alvo).innerText;
+    var ok=function(){var o=b.textContent;b.textContent='Copiado';setTimeout(function(){b.textContent=o},1800)};
+    if(navigator.clipboard){navigator.clipboard.writeText(t).then(ok,function(){})}
+  });
+});
+</script>
+</body>
+</html>

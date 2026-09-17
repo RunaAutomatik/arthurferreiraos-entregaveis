@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Os 6 repositórios · guia · Arthur Ferreira</title>
+<meta name="description" content="O guia completo dos 6 repositórios: o comando que instala cada um no Claude Code, o que cada um substitui, como eu uso no dia a dia e a ordem em que eu instalaria hoje.">
+<meta property="og:title" content="Os 6 repositórios · o guia completo">
+<meta property="og:description" content="O comando de instalação de cada um, o que substitui e a ordem em que eu instalaria se fosse começar hoje.">
+<meta property="og:image" content="capa-poster.jpg">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="../entregaveis.css">
+<link rel="stylesheet" href="../guia.css">
+</head>
+<body>
+
+<header class="hero g">
+  <div class="col">
+    <div class="top">
+      <a href="https://www.instagram.com/arthurferreiraos/">@arthurferreiraos</a>
+      <svg viewBox="0 0 100 100" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" fill="currentColor" d="M 20 20 h 60 a 8 8 0 0 1 8 8 v 44 a 8 8 0 0 1 -8 8 h -60 a 8 8 0 0 1 -8 -8 v -44 a 8 8 0 0 1 8 -8 Z M 50 27 L 33 55 L 40 55 L 50 38 L 60 55 L 67 55 Z M 41 63 L 55 63 L 55 67 L 41 67 Z M 66.5 65 a 4.5 4.5 0 1 0 -9 0 a 4.5 4.5 0 1 0 -9 0 Z"/></svg>
+    </div>
+    <span class="eyebrow">Guia completo · palavra-chave FUGA</span>
+    <h1>Os 6 repositórios</h1>
+    <p class="lede">Seis projetos abertos no GitHub que fazem o trabalho de ferramentas que cobram assinatura. Aqui está o comando que instala cada um, o que cada um substitui de verdade, como eu uso no dia a dia e a ordem em que eu instalaria se fosse começar hoje.</p>
+    <div class="film vert">
+      <video src="capa.mp4" poster="capa-poster.jpg" autoplay muted loop playsinline></video>
+    </div>
+    <p class="caption">Um dos slides do carrossel. O vídeo dentro dele foi feito com o número 3 desta lista.</p>
+  </div>
+</header>
+
+<main class="g">
+<div class="col">
+
+  <section>
+    <span class="eyebrow">Antes de tudo</span>
+    <h2>Nada aqui é pirataria</h2>
+    <p class="intro">Todos os seis são repositórios públicos, com licença declarada e código à vista. Cinco usam licença aberta, MIT ou Apache 2.0, que permite uso comercial. O sexto, o Remotion, é o único com regra própria: livre para pessoa física e para empresa de até três funcionários, e com licença paga acima disso.</p>
+    <p class="note">O carrossel diz "parecem ilegais" por causa do preço, não da lei. O que incomoda é perceber que a assinatura que você paga é, em boa parte, a versão embalada de algo que já está aberto. Os valores que aparecem nos slides são preços de tabela lidos em 16 de setembro de 2026 e mudam sem aviso. Confira antes de repetir o número por aí.</p>
+  </section>
+
+  <section>
+    <span class="eyebrow">Antes de instalar</span>
+    <h2>Três regras que evitam bagunça</h2>
+    <div class="rules">
+      <div class="rule"><span class="n">01</span><div><h3>Um de cada vez</h3><p>Instale um, use por um dia, só então vá para o próximo. Instalar os seis numa tarde faz o agente mudar de comportamento em bloco, e você não sabe qual mudou o quê.</p></div></div>
+      <div class="rule"><span class="n">02</span><div><h3>Feche e abra o Claude Code depois</h3><p>Skill é lida na abertura da sessão. Instalar com a sessão aberta e não ver nada acontecer é o susto mais comum, e não é erro de instalação.</p></div></div>
+      <div class="rule"><span class="n">03</span><div><h3>Prefira instalar no projeto</h3><p>O impeccable e o ui-ux-pro-max perguntam se é no projeto ou na máquina inteira. Skill de design ligada em tudo entra no contexto de sessões que não têm nada a ver com design, e contexto é o recurso mais caro que você tem.</p></div></div>
+    </div>
+    <p class="note">Os comandos com <code>npx</code> precisam de Node 18 ou mais novo. O <code>npx</code> baixa na hora e não deixa pacote instalado na máquina, então dá para testar sem sujar nada.</p>
+  </section>
+
+  <section>
+    <span class="eyebrow">01 · pbakaus / impeccable</span>
+    <h2>O fim do v0</h2>
+    <div class="ficha"><span>68,5 mil★</span><span>Apache 2.0</span><span>substitui: gerador de tela por assinatura</span></div>
+    <p>É uma linguagem de design que o seu agente passa a consultar antes de desenhar qualquer coisa. Não é um tema nem um pacote de componentes: é o critério que faz a diferença entre uma tela que parece template e uma tela que parece feita por alguém que sabe o que está fazendo.</p>
+    <div class="prompt">
+      <div class="bar"><span>instalação · rode na raiz do seu projeto</span><button type="button" id="copy-1" data-alvo="c-1">Copiar comando</button></div>
+<pre id="c-1">npx impeccable install</pre>
+    </div>
+    <p>Ele detecta sozinho quais agentes você tem na máquina, mostra a lista e pergunta se instala no projeto ou global. Funciona com Claude Code, Cursor, Codex e vários outros.</p>
+    <p class="note"><b>Como eu uso:</b> ligo no projeto do cliente e deixo. A primeira dobra do site do Korubo Safari, que está no slide 3 do carrossel, saiu daí. Não é template com a logo trocada: é a identidade do cliente, desenhada com o critério que o impeccable instala no agente.</p>
+  </section>
+
+  <section>
+    <span class="eyebrow">02 · nextlevelbuilder / ui-ux-pro-max-skill</span>
+    <h2>O fim do Lovable</h2>
+    <div class="ficha"><span>128 mil★</span><span>MIT</span><span>substitui: construtor de app por assinatura</span></div>
+    <p>Inteligência de design que o agente consulta antes de desenhar interface: estilos, paletas, regras de componente e de espaçamento. Onde o impeccable dá critério, este dá repertório.</p>
+    <div class="prompt">
+      <div class="bar"><span>instalação · dentro do Claude Code</span><button type="button" id="copy-2" data-alvo="c-2">Copiar comandos</button></div>
+<pre id="c-2">/plugin marketplace add nextlevelbuilder/ui-ux-pro-max-skill
+/plugin install ui-ux-pro-max@ui-ux-pro-max-skill</pre>
+    </div>
+    <p>Se preferir pelo terminal, existe um CLI próprio que também instala em Cursor, Windsurf, Codex e Gemini:</p>
+    <div class="prompt">
+      <div class="bar"><span>instalação · pelo terminal</span><button type="button" id="copy-2b" data-alvo="c-2b">Copiar comandos</button></div>
+<pre id="c-2b">npm install -g ui-ux-pro-max-cli
+cd caminho/do/seu/projeto
+uipro init --ai claude</pre>
+    </div>
+    <p class="note"><b>Como eu uso:</b> em modo skill, que ativa sozinho quando o pedido é de interface. Eu não chamo pelo nome. Peço a tela e ela sai melhor.</p>
+  </section>
+
+  <section>
+    <span class="eyebrow">03 · remotion-dev / remotion</span>
+    <h2>O fim do After Effects</h2>
+    <div class="ficha"><span>59,5 mil★</span><span>licença própria</span><span>substitui: editor de motion por assinatura</span></div>
+    <p>Vídeo feito com código. Você descreve a animação em palavras, o Claude escreve o componente e o Remotion renderiza o arquivo final. Sem linha do tempo, sem keyframe arrastado com o mouse, e sem refazer tudo quando o texto muda.</p>
+    <div class="prompt">
+      <div class="bar"><span>instalação · cria o projeto de vídeo</span><button type="button" id="copy-3" data-alvo="c-3">Copiar comando</button></div>
+<pre id="c-3">npx create-video@latest</pre>
+    </div>
+    <p><b>A licença, sem letra miúda:</b> livre e de graça, inclusive para uso comercial, se você é pessoa física, organização sem fins lucrativos ou empresa com até três funcionários. Acima disso, a empresa precisa comprar a licença. É o único dos seis com essa regra, e é justo avisar antes de você montar um fluxo inteiro em cima dele.</p>
+    <p class="note"><b>Como eu uso:</b> é o que renderizou o carrossel animado inteiro do outro post, os oito slides em vídeo. O slide que aparece no card de prova do carrossel é um frame desse render. Nenhum editor abriu.</p>
+  </section>
+
+  <section>
+    <span class="eyebrow">04 · bergside / awesome-design-skills</span>
+    <h2>O fim do kit de UI pago</h2>
+    <div class="ficha"><span>2,8 mil★</span><span>MIT</span><span>substitui: kit de interface de compra única</span></div>
+    <p>Sessenta e sete arquivos de skill de design prontos, um por estilo. É o kit de interface que você compraria, em texto, para o agente ler. Cada estilo é um arquivo que você puxa quando precisa e apaga quando não precisa mais.</p>
+    <div class="prompt">
+      <div class="bar"><span>instalação · um estilo por vez</span><button type="button" id="copy-4" data-alvo="c-4">Copiar comando</button></div>
+<pre id="c-4">npx typeui.sh pull glassmorphism</pre>
+    </div>
+    <p>Troque <span class="fill">glassmorphism</span> pelo estilo que você quer. Rodar o comando sem nome abre a lista para escolher.</p>
+    <p class="note"><b>Como eu uso:</b> este é o único que eu não deixo instalado. Puxo o estilo na hora em que o projeto pede, uso, e sigo. É o oposto da regra 03 lá em cima, e de propósito: repertório de estilo é coisa de projeto, não de máquina.</p>
+  </section>
+
+  <section>
+    <span class="eyebrow">05 · upstash / context7</span>
+    <h2>O fim da documentação desatualizada</h2>
+    <div class="ficha"><span>62,1 mil★</span><span>MIT</span><span>resolve: o agente inventar função que não existe mais</span></div>
+    <p>Entrega a documentação atual de qualquer biblioteca direto para o agente, na hora. O motivo de existir é simples: o modelo aprendeu a biblioteca numa versão que já passou, e por isso escreve com confiança uma função que foi removida há dois anos. O context7 troca a memória dele pela doc de hoje.</p>
+    <div class="prompt">
+      <div class="bar"><span>instalação · um comando só</span><button type="button" id="copy-5" data-alvo="c-5">Copiar comando</button></div>
+<pre id="c-5">npx ctx7 setup</pre>
+    </div>
+    <p>Ele autentica, gera a chave e pergunta se você quer o modo skill ou o modo MCP. Use <span class="fill">--claude</span> no fim para ir direto ao Claude Code. A chave gratuita serve, e só muda o limite de consultas.</p>
+    <p class="note"><b>Como eu uso:</b> modo skill, ligado em todo projeto que tem código. É o de menor atrito da lista inteira e o que dá resultado no mesmo dia.</p>
+  </section>
+
+  <section>
+    <span class="eyebrow">06 · thedotmack / claude-mem</span>
+    <h2>O fim do Mem</h2>
+    <div class="ficha"><span>94 mil★</span><span>Apache 2.0</span><span>substitui: app de memória por assinatura</span></div>
+    <p>Memória que atravessa as sessões. Ele observa o que o agente fez enquanto você trabalhava, comprime, e devolve o que importa na próxima vez que você abrir. O agente lembra do que fez ontem sem você colar tudo de novo.</p>
+    <div class="prompt">
+      <div class="bar"><span>instalação</span><button type="button" id="copy-6" data-alvo="c-6">Copiar comando</button></div>
+<pre id="c-6">npx claude-mem install</pre>
+    </div>
+    <p><b>Onde a sua memória fica:</b> o padrão do instalador é a memória hospedada deles. O observador local existe e é opção, não padrão. Se você prefere que nada saia da sua máquina, instale com <span class="fill">--provider host</span>. Vale decidir isso antes, e não depois de três meses de histórico gravado.</p>
+    <p class="note"><b>Como eu uso:</b> é o que faz a sessão de hoje começar sabendo o que a de ontem decidiu. Sem isso, todo dia começa explicando o projeto de novo.</p>
+  </section>
+
+  <section>
+    <span class="eyebrow">Se fosse começar hoje</span>
+    <h2>A ordem que eu instalaria</h2>
+    <ol class="steps">
+      <li><div><h3>context7</h3><p>Menor atrito, ganho no mesmo dia. O agente para de inventar função.</p></div></li>
+      <li><div><h3>impeccable</h3><p>Muda o que aparece na tela. É o que mais se vê de fora.</p></div></li>
+      <li><div><h3>claude-mem</h3><p>A partir daqui você para de repetir contexto.</p></div></li>
+      <li><div><h3>ui-ux-pro-max</h3><p>Quando o trabalho virar interface de verdade.</p></div></li>
+      <li><div><h3>awesome-design-skills</h3><p>Quando um projeto pedir um estilo específico. Puxe na hora.</p></div></li>
+      <li><div><h3>remotion</h3><p>Quando você for fazer vídeo. Confira a licença antes, se for empresa.</p></div></li>
+    </ol>
+  </section>
+
+  <section>
+    <span class="eyebrow">Quando dá errado</span>
+    <h2>Consertos</h2>
+    <div class="tbl"><table>
+      <thead><tr><th>Sintoma</th><th>O que fazer</th></tr></thead>
+      <tbody>
+        <tr><td>Instalei e a skill não aparece</td><td>Feche e abra o Claude Code. Skill é lida na abertura da sessão, não durante ela.</td></tr>
+        <tr><td><code>npx</code> não é reconhecido</td><td>Falta o Node. Instale a versão 18 ou mais nova e abra um terminal novo.</td></tr>
+        <tr><td>Instalei global e agora tudo carrega design</td><td>Rode o instalador de novo e escolha projeto. Global é conveniente no começo e caro em contexto depois.</td></tr>
+        <tr><td>O agente continua escrevendo função que não existe</td><td>Peça a documentação atual pelo nome da biblioteca. Em modo skill o context7 ativa a pedido, não sozinho em toda frase.</td></tr>
+        <tr><td>Instalei os seis e piorou</td><td>Desligue todos e volte um por dia. Seis skills brigando por contexto é pior do que nenhuma.</td></tr>
+      </tbody>
+    </table></div>
+  </section>
+
+  <section>
+    <span class="eyebrow">Para conferir você mesmo</span>
+    <h2>As estrelas de hoje</h2>
+    <p>Os números do carrossel foram lidos em 16 de setembro de 2026 e sobem todo dia. Se quiser o número de agora, rode isto no terminal:</p>
+    <div class="prompt">
+      <div class="bar"><span>contagem ao vivo</span><button type="button" id="copy-7" data-alvo="c-7">Copiar comando</button></div>
+<pre id="c-7">for r in pbakaus/impeccable bergside/awesome-design-skills nextlevelbuilder/ui-ux-pro-max-skill remotion-dev/remotion upstash/context7 thedotmack/claude-mem; do
+  curl -s "https://api.github.com/repos/$r" | grep -m1 '"stargazers_count"'
+done</pre>
+    </div>
+  </section>
+
+</div>
+</main>
+
+<div class="close g">
+  <div class="col">
+    <span class="eyebrow" style="color:#E3A868">Se só lembrar disso</span>
+    <h2>A assinatura que você paga costuma ser a versão embalada do que já está aberto.</h2>
+    <p>Instalou algum e viu diferença? Me conta no <a href="https://www.instagram.com/arthurferreiraos/">@arthurferreiraos</a>. Eu quero saber qual dos seis mudou mais o seu dia.</p>
+  </div>
+</div>
+<footer class="g"><div class="col">arthurferreiraos.com/entregaveis</div></footer>
+
+<script>
+document.querySelectorAll('button[data-alvo]').forEach(function(b){
+  b.addEventListener('click',function(){
+    var t=document.getElementById(b.dataset.alvo).innerText;
+    var ok=function(){var o=b.textContent;b.textContent='Copiado';setTimeout(function(){b.textContent=o},1800)};
+    if(navigator.clipboard){navigator.clipboard.writeText(t).then(ok,function(){})}
+  });
+});
+</script>
+</body>
+</html>

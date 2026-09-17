@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Salão Inundado · guia · Arthur Ferreira</title>
+<meta name="description" content="O guia completo do carrossel salão inundado: uma imagem horizontal, uma animação com a câmera parada e um corte no meio. Os dois prompts inteiros.">
+<meta property="og:title" content="Salão Inundado · o guia completo">
+<meta property="og:description" content="Os dois prompts inteiros e o que fazer quando a folha começa a atravessar a coluna.">
+<meta property="og:image" content="salao-poster.jpg">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="../entregaveis.css">
+<link rel="stylesheet" href="../guia.css">
+</head>
+<body>
+
+<header class="hero g">
+  <div class="col">
+    <div class="top">
+      <a href="https://www.instagram.com/arthurferreiraos/">@arthurferreiraos</a>
+      <svg viewBox="0 0 100 100" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" fill="currentColor" d="M 20 20 h 60 a 8 8 0 0 1 8 8 v 44 a 8 8 0 0 1 -8 8 h -60 a 8 8 0 0 1 -8 -8 v -44 a 8 8 0 0 1 8 -8 Z M 50 27 L 33 55 L 40 55 L 50 38 L 60 55 L 67 55 Z M 41 63 L 55 63 L 55 67 L 41 67 Z M 66.5 65 a 4.5 4.5 0 1 0 -9 0 a 4.5 4.5 0 1 0 -9 0 Z"/></svg>
+    </div>
+    <span class="eyebrow">Guia completo · palavra-chave CINEMA</span>
+    <h1>Salão inundado</h1>
+    <p class="lede">Uma imagem horizontal. Uma animação com a câmera parada. Um corte no meio. Aqui estão os dois prompts inteiros e o que fazer quando a folha começa a atravessar a coluna.</p>
+    <div class="film">
+      <video src="salao.mp4" poster="salao-poster.jpg" autoplay muted loop playsinline></video>
+      <span class="seam" aria-hidden="true"></span>
+      <span class="lbl l1">slide 1</span><span class="lbl l2">slide 2</span>
+    </div>
+    <p class="caption">O quadro inteiro, antes do corte. A linha tracejada é onde ele vira dois slides.</p>
+  </div>
+</header>
+
+<main class="g">
+<div class="col">
+
+  <section>
+    <span class="eyebrow">O sistema</span>
+    <h2>Uma sala só, não oito imagens</h2>
+    <p class="intro">Os slides 1 e 2 não são duas artes. São as duas metades do mesmo quadro. Como a imagem continua do outro lado da costura, o arrastar parece uma câmera passando pela sala, e não a troca de uma foto pela outra.</p>
+    <p class="note">Não dá para gerar duas imagens e torcer para elas encaixarem: a luz, a pedra e as folhas nunca batem. Também não dá para animar as metades separadas, porque os movimentos saem de sincronia. Um quadro largo, uma animação larga e um corte no final. As metades batem porque nunca foram separadas.</p>
+  </section>
+
+  <section>
+    <span class="eyebrow">Antes de gerar qualquer coisa</span>
+    <h2>Três regras que fazem o corte funcionar</h2>
+    <div class="rules">
+      <div class="rule"><span class="n">01</span><div><h3>Deixe a linha do meio vazia</h3><p>O quadro vai ser cortado exatamente no centro. O que estiver em cima dessa linha fica pela metade em cada slide, e a ilusão morre. Escreva isso no prompt: nada importante cruza o centro.</p></div></div>
+      <div class="rule"><span class="n">02</span><div><h3>Cada metade precisa se sustentar</h3><p>O slide 1 precisa de um assunto e o slide 2 também. Se a pessoa fica no centro e o lado direito fica vazio, o slide 2 vira foto de parede. Coloque a pessoa a um terço do quadro e dê à outra metade a própria profundidade.</p></div></div>
+      <div class="rule"><span class="n">03</span><div><h3>O texto entra antes de animar</h3><p>Monte a manchete em cima da imagem parada e mande esse quadro pronto como primeiro frame do vídeo. É isso que deixa o elemento passar <em>na frente</em> do texto. Texto colocado depois fica parecendo template colado em cima.</p></div></div>
+    </div>
+    <p class="note">Mais uma: deixe o quarto esquerdo do quadro como superfície limpa. É onde a manchete senta, e uma pedra com veio forte briga com a tipografia.</p>
+  </section>
+
+  <section>
+    <span class="eyebrow">Passo 1 · a imagem</span>
+    <h2>O prompt de imagem</h2>
+    <p>Gere na horizontal e em alta resolução. O prompt fica em inglês porque os modelos seguem melhor as regras de composição assim. Troque o que está em <span class="fill" style="color:var(--amber-deep)">[colchetes]</span>.</p>
+    <div class="ficha"><span>Nano Banana Pro ou GPT Image 2</span><span>16:9</span><span>2K</span><span>fotos reais de referência, se for você</span></div>
+    <div class="prompt">
+      <div class="bar"><span>prompt de imagem</span><button type="button" id="copy-img" data-alvo="p-img">Copiar prompt</button></div>
+<pre id="p-img">FORMAT
+One horizontal frame, 16:9 landscape. Photorealistic editorial photograph, shot on a full-frame camera. No text anywhere in the image.
+
+COMPOSITION, this governs everything else
+The frame will later be trimmed slightly at the left and right and cut in half down the exact vertical centre, and each half has to stand on its own. Place the <span class="fill">[subject]</span> in the LEFT half, about a third of the way across the frame. Leave the leftmost quarter of the frame as a clean, calm, unbroken surface in soft light, with no strong veins, no objects and nothing floating in its lower two thirds. The RIGHT half holds the space receding into depth with its own floating elements and its own open depth. Nothing important crosses the vertical centre line.
+
+SCENE
+The interior of a vast, quiet, empty <span class="fill">[stone hall]</span>. A row of massive round columns recedes into depth across the frame, cut from <span class="fill">[pale cream limestone with faint sage-green veining]</span>, worn smooth by age. The nearest column stands immediately behind the subject, cropped by the top edge. Behind it the hall recedes into deep <span class="fill">[forest-green]</span> shadow. Hard low <span class="fill">[late-afternoon]</span> sunlight cuts in from the left through an opening out of frame, laying long column shadows across the floor. The air is faintly hazy so the depth reads.
+
+CAMERA
+Standing eye level, 35mm, straight on, deep focus except for the extreme foreground.
+
+SUBJECT
+<span class="fill">[Describe the person. If it is you, attach your real photos and write: "The person from the reference photos. Keep the face exactly. Facial fidelity is the top priority."]</span> Leaning against the nearest column, weight on one leg, the other foot crossed over it, both hands in pockets, head turned toward the right of frame, calm. Full length, with headroom above.
+
+WARDROBE
+<span class="fill">[Two or three pieces, plain, nothing branded, nothing patterned.]</span>
+
+FLOATING ELEMENTS, placed deliberately
+<span class="fill">[Dry amber autumn leaves and winged maple seeds]</span> hang motionless in the air as if the hall were quietly flooded, at clearly different depths and sizes.
+In the LEFT half: two small ones in the upper left, far back; one small one near elbow height, further back than the subject.
+In the RIGHT half: one ENORMOUS one filling the bottom right corner in the extreme foreground, cut by the right and bottom edges, well out of focus; one large sharply focused one in the upper right; one mid-size at hip height in front of a column base; one mid-size higher up, half veiled by shadow.
+None of them touches the vertical centre. Each is fully opaque and casts a soft shadow on the stone.
+
+FINISH
+Everything perfectly still. Natural skin with visible texture. Rich warm colour, high contrast, cinematic, nothing washed out.
+
+DO NOT INCLUDE
+No text, no letters, no logo, no watermark; no water, no ripples, no splash; no other people; no modern building, no tile; no transparent or ghosted elements; no skin smoothing; no illustration, no painterly effect, no CGI look.</pre>
+    </div>
+    <p class="note">Gere quatro ou cinco. Você procura uma em que o quarto esquerdo esteja realmente limpo, a linha do meio realmente vazia e o elemento da frente realmente gigante. Dois de três não bastam: o corte mostra.</p>
+  </section>
+
+  <section>
+    <span class="eyebrow">Passo 2 · a manchete</span>
+    <h2>Texto em cima da imagem parada</h2>
+    <ol class="steps">
+      <li><div><h3>Manchete no quarto esquerdo</h3><p>Poucas palavras, fonte condensada e pesada, em caixa alta, alinhada à esquerda. Longe da pessoa.</p></div></li>
+      <li><div><h3>Uma linha pequena na metade direita</h3><p>É o que dá ao slide 2 um motivo para existir. Ex.: "Copie o prompt, troque a cena e gere de novo."</p></div></li>
+      <li><div><h3>Nada na linha do meio</h3><p>Nem texto, nem logo, nem selo.</p></div></li>
+      <li><div><h3>Exporte o quadro já composto</h3><p>É essa imagem, com o texto, que vai para o modelo de vídeo. Não a imagem crua.</p></div></li>
+    </ol>
+  </section>
+
+  <section>
+    <span class="eyebrow">Passo 3 · a animação</span>
+    <h2>O prompt de vídeo</h2>
+    <p>Suba o quadro com o texto como primeiro frame. O prompt é longo de propósito: quase toda linha existe para impedir o modelo de fazer algo que você não quer.</p>
+    <div class="ficha"><span>Seedance 2.0</span><span>16:9</span><span>1080p</span><span>5 s</span><span>sem áudio</span><span>1º frame = a capa com texto</span></div>
+    <div class="prompt">
+      <div class="bar"><span>prompt de vídeo</span><button type="button" id="copy-vid" data-alvo="p-vid">Copiar prompt</button></div>
+<pre id="p-vid">5 seconds, landscape 16:9, one continuous shot, no cuts. Photorealistic live-action, warm cinematic colour. The opening frame is the reference image: the hall, the columns, the subject, the floating elements and the lettering all continue exactly from it.
+
+CAMERA RULE, ABSOLUTE
+The camera is locked on a tripod and never moves. Identical framing, angle, distance and lens from the first frame to the last. No pan, no tilt, no push, no pull, no orbit, no zoom, no reframing, no handheld drift, no parallax shift of the columns.
+
+TEXT RULE, ABSOLUTE
+The lettering in the opening frame is painted into the image. Every letter of the large headline on the left and the small lines on the right holds its exact shape, weight, colour, size, position and spelling for the whole clip. The lettering never moves, never warps, never wobbles, never duplicates, never re-renders, never brightens and never fades.
+
+FOREGROUND RULE, ABSOLUTE
+The huge <span class="fill">[leaf]</span> in the lower right corner is the closest object to the lens. It is enormous, soft, out of focus and completely solid. As it drifts, whatever it passes over is hidden behind it while it is there: the floor, the column bases, the subject's legs and the large headline on the left all disappear under it as it crosses, and reappear untouched once it has gone.
+
+SUBJECT RULE, ABSOLUTE
+The subject stays exactly where they are for the whole clip: the same lean, the same crossed legs, both hands in pockets, the same head angle and eyeline, the same calm expression. Alive but rooted: slow breathing, two slow blinks. The feet never move.
+
+0-1s
+The small elements already in the air drift very slowly, turning gently as if sinking through still water.
+1-4s
+The huge out-of-focus foreground element glides slowly from the lower right edge toward the left, in a low, gently rocking path across the lower half of the picture. It passes in front of the subject's legs, then across the area where the headline sits, covering the letters beneath it, until it clears the left edge of frame.
+4-5s
+The picture is fully revealed again, the headline whole and unchanged. The other elements keep their slow drift. The shot holds steady.
+
+PHYSICAL RULES
+<span class="fill">[Leaves move as they would sinking slowly through still water: weighted, rocking, turning on their axis, never flying fast.]</span> The light and the colour grade stay exactly as in the opening frame.
+
+NEGATIVE PROMPT
+No camera movement, no zoom, no pan, no tilt, no reframing, no shake; no cuts, no dissolves; no warping, wobbling, duplicated or misspelled letters, no drifting or fading type, no letters drawn on top of the large element; no walking, no stepping, no hands leaving the pockets, no head turn toward the lens; no transparent or ghosted elements, nothing passing through columns or through the subject; no water surface, no bubbles; no colour shift, no fade to black; no new people or objects; no music, no audio, no subtitles; no watermark.</pre>
+    </div>
+  </section>
+
+  <section>
+    <span class="eyebrow">Passo 4 · o corte</span>
+    <h2>Dois slides de um vídeo só</h2>
+    <p>O Instagram usa 4:5 no carrossel. Um vídeo 16:9 aparado para 16:10 vira duas metades 4:5 exatas, sem faixa preta.</p>
+    <ol class="steps">
+      <li><div><h3>Apare as laterais</h3><p>Corte 5% de cada lado do vídeo 16:9. Ele fica 16:10.</p></div></li>
+      <li><div><h3>Duplique o vídeo</h3><p>Duas cópias idênticas.</p></div></li>
+      <li><div><h3>Uma cópia vira a metade esquerda</h3><p>Recorte 4:5 encostado na borda esquerda. Esse é o slide 1.</p></div></li>
+      <li><div><h3>A outra vira a metade direita</h3><p>Recorte 4:5 encostado na borda direita. Esse é o slide 2.</p></div></li>
+    </ol>
+    <p class="note">As duas metades se encontram no centro exato, sem sobra e sem buraco. Poucos pixels a mais e o elemento aparece duas vezes; poucos a menos e a sala dá um pulo. Amplie e confira a costura antes de postar.</p>
+    <div class="prompt">
+      <div class="bar"><span>para quem usa ffmpeg</span><button type="button" id="copy-ff" data-alvo="p-ff">Copiar comando</button></div>
+<pre id="p-ff">ffmpeg -i video-1080p.mp4 -filter_complex "[0:v]crop=1728:1080:96:0,split=2[a][b];[a]crop=864:1080:0:0,scale=1080:1350:flags=lanczos[l];[b]crop=864:1080:864:0,scale=1080:1350:flags=lanczos[r]" -map "[l]" -an -c:v libx264 -crf 16 slide-1.mp4 -map "[r]" -an -c:v libx264 -crf 16 slide-2.mp4</pre>
+    </div>
+  </section>
+
+  <section>
+    <span class="eyebrow">Faça a sua versão</span>
+    <h2>O que trocar</h2>
+    <p>A estrutura é o ativo. As folhas foram só o que eu coloquei dentro dela. Troque uma coluna por vez: mudar tudo junto gera algo que não parece a referência e não ensina o que funcionou.</p>
+    <div class="swap">
+      <div><h3>Sujeito</h3><p>você · uma cliente · um chef · uma atleta</p></div>
+      <div><h3>Cenário</h3><p>palácio · biblioteca · floresta · praia</p></div>
+      <div><h3>Elemento</h3><p>folhas · borboletas · pétalas · cristais</p></div>
+      <div><h3>Luz</h3><p>fim de tarde · luar · luz de vela · estúdio</p></div>
+    </div>
+    <p class="note">Mantenha a física honesta. Borboleta bate asa, pétala cai e para, cristal quase não se mexe. Uma folha que nada como peixe parece errada, e ninguém consegue dizer por quê.</p>
+  </section>
+
+  <section>
+    <span class="eyebrow">Quando dá errado</span>
+    <h2>Consertos</h2>
+    <div class="tbl"><table>
+      <thead><tr><th>Sintoma</th><th>O que fazer</th></tr></thead>
+      <tbody>
+        <tr><td>A folha atravessa a coluna</td><td>A instrução de profundidade está fraca. Diga que cada elemento é totalmente opaco e esconde o que está atrás, e ponha "nothing passing through columns" no negativo.</td></tr>
+        <tr><td>As letras tremem</td><td>O modelo está redesenhando o texto. Dê ao texto uma regra absoluta própria (forma, peso, cor, tamanho, posição e grafia) e proíba distorção pelo nome.</td></tr>
+        <tr><td>A câmera escorrega</td><td>Quase sempre é uma palavra de movimento em outro trecho do prompt. Escreva "locked on a tripod" e liste cada movimento proibido: pan, tilt, push, pull, orbit, zoom.</td></tr>
+        <tr><td>As metades não batem</td><td>O corte ficou com sobra ou buraco. Refaça no centro exato. Se a costura ainda mexe, a câmera andou na geração: gere de novo em vez de remendar.</td></tr>
+        <tr><td>A pessoa se mexe</td><td>"Fique parado" não basta. Nomeie cada parte que não se mexe (rosto, olhos, cabelo, roupa, mãos, pés) e libere só duas coisas: respirar e piscar.</td></tr>
+        <tr><td>Parece agitado</td><td>Tem coisa demais se mexendo. Volte para um elemento só. Quanto mais simples o movimento, mais parece cinema.</td></tr>
+      </tbody>
+    </table></div>
+  </section>
+
+</div>
+</main>
+
+<div class="close g">
+  <div class="col">
+    <span class="eyebrow" style="color:#E3A868">Se só lembrar disso</span>
+    <h2>Câmera parada. Um elemento. Um corte.</h2>
+    <p>Um quadro congelado com uma coisa só se mexendo é uma fotografia que ganhou vida. Três coisas se mexendo viram protetor de tela.</p>
+    <p>Fez a sua versão? Me marca no <a href="https://www.instagram.com/arthurferreiraos/">@arthurferreiraos</a>. A técnica original é do <a href="https://www.instagram.com/ai.withphil/">@ai.withphil</a>; eu refiz com a minha cara e o meu salão.</p>
+  </div>
+</div>
+<footer class="g"><div class="col">arthurferreiraos.com/entregaveis</div></footer>
+
+<script>
+document.querySelectorAll('button[data-alvo]').forEach(function(b){
+  b.addEventListener('click',function(){
+    var t=document.getElementById(b.dataset.alvo).innerText;
+    var ok=function(){var o=b.textContent;b.textContent='Copiado';setTimeout(function(){b.textContent=o},1800)};
+    if(navigator.clipboard){navigator.clipboard.writeText(t).then(ok,function(){})}
+  });
+});
+</script>
+</body>
+</html>
